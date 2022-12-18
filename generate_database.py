@@ -407,7 +407,7 @@ def write_to_csv(filename):
 	
 if __name__ == "__main__":
     # Initialize  parser (Chrome) - Download the version of used chrome in the same path, and change the PATH
-    PATH = "/Users/essen/Desktop/Fate/chromedriver"
+    PATH = "/Users/essen/Library/Mobile Documents/com~apple~CloudDocs/Documents/交大/Fate/chromedriver"
     driver = webdriver.Chrome(PATH)
     driver.get("https://ziweigonglue1013.firebaseapp.com/login")
     #輸入帳號密碼 - 自動登入
@@ -443,4 +443,4 @@ if __name__ == "__main__":
     set_birth_date(argv.Year,month,argv.Day,argv.hour,argv.mins) 
 
     time.sleep(2)
-    write_to_csv(argv.Name+'-'+(argv.Year+'-'+str(argv.Month)+'-'+argv.Day+'-'+argv.hour+'-'+argv.mins+'.csv'))
+    write_to_csv('./data/'+argv.Name+'-'+(argv.Year+'-'+str(argv.Month)+'-'+argv.Day+'-'+argv.hour+'-'+argv.mins+'.csv'))
