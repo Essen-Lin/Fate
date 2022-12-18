@@ -44,7 +44,7 @@ pip3 install [packageName]
     * [-n] : 受測者姓名
     * [-g] : 受測者性別 （woman/w or man/m)
     * [-Y] : 出生西元年
-
+4. 在data這個資料夾下可以找到對應生成的資料庫
 
 ```
 
