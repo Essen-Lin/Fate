@@ -31,55 +31,55 @@ def usrname_gender(Name,gen):
         woman.click()
     elif gen == 'm'or'man':
         man.click()
-    name = driver.find_element_by_name('ion-input-0')
+    name = driver.find_element(by=By.NAME,value='ion-input-0')
     name.send_keys(Name)
 
 def set_birth_date(year,month,day,hours,mins):
     
-    data_but_start = driver.find_element_by_xpath('//*[@id="picker-input"]')
+    data_but_start = driver.find_element(by=By.XPATH, value='//*[@id="picker-input"]')
     data_but_start.click()
     time.sleep(5)
     # write script - years
     script_y ="document.getElementsByClassName('picker-years')[0].getElementsByClassName('picker-item picker-picked')[0].setAttribute('data-value'," + year + ")"
     # generate a alert via javascript
     driver.execute_script(script_y)
-    driver.find_element_by_css_selector('body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-years > div.picker-cell__control.picker-cell__control--prev').click()
-    driver.find_element_by_css_selector('body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-years > div.picker-cell__control.picker-cell__control--next').click()
+    driver.find_element(by=By.CSS_SELECTOR, value='body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-years > div.picker-cell__control.picker-cell__control--prev').click()
+    driver.find_element(by=By.CSS_SELECTOR, value='body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-years > div.picker-cell__control.picker-cell__control--next').click()
 
     # write script - months
     script_m ="document.getElementsByClassName('picker-months')[0].getElementsByClassName('picker-item picker-picked')[0].setAttribute('data-value'," + month + ")"
     # generate a alert via javascript
     driver.execute_script(script_m)
-    driver.find_element_by_css_selector('body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-months > div.picker-cell__control.picker-cell__control--prev').click()
-    driver.find_element_by_css_selector('body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-months > div.picker-cell__control.picker-cell__control--next').click()
+    driver.find_element(by=By.CSS_SELECTOR, value='body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-months > div.picker-cell__control.picker-cell__control--prev').click()
+    driver.find_element(by=By.CSS_SELECTOR, value='body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-months > div.picker-cell__control.picker-cell__control--next').click()
 
      # write script - days
     script_d ="document.getElementsByClassName('picker-days')[0].getElementsByClassName('picker-item picker-picked')[0].setAttribute('data-value'," + day+ ")"
     # generate a alert via javascript
     driver.execute_script(script_d)
-    driver.find_element_by_css_selector('body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-days > div.picker-cell__control.picker-cell__control--prev').click()
-    driver.find_element_by_css_selector('body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-days > div.picker-cell__control.picker-cell__control--next').click()
+    driver.find_element(by=By.CSS_SELECTOR, value='body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-days > div.picker-cell__control.picker-cell__control--prev').click()
+    driver.find_element(by=By.CSS_SELECTOR, value='body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-days > div.picker-cell__control.picker-cell__control--next').click()
 
      # write script - hours 
     script_h ="document.getElementsByClassName('picker-hours')[0].getElementsByClassName('picker-item picker-picked')[0].setAttribute('data-value'," + hours + ")"
     # generate a alert via javascript
     driver.execute_script(script_h)
-    driver.find_element_by_css_selector('body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-hours > div.picker-cell__control.picker-cell__control--prev').click()
-    driver.find_element_by_css_selector('body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-hours > div.picker-cell__control.picker-cell__control--next').click()
+    driver.find_element(by=By.CSS_SELECTOR, value='body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-hours > div.picker-cell__control.picker-cell__control--prev').click()
+    driver.find_element(by=By.CSS_SELECTOR, value='body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-hours > div.picker-cell__control.picker-cell__control--next').click()
 
     # write script - mins
     script_n ="document.getElementsByClassName('picker-minutes')[0].getElementsByClassName('picker-item picker-picked')[0].setAttribute('data-value'," + mins + ")"
     # generate a alert via javascript
     driver.execute_script(script_n)
-    driver.find_element_by_css_selector('body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-minutes > div.picker-cell__control.picker-cell__control--prev').click()
-    driver.find_element_by_css_selector('body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-minutes > div.picker-cell__control.picker-cell__control--next').click()
+    driver.find_element(by=By.CSS_SELECTOR, value='body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-minutes > div.picker-cell__control.picker-cell__control--prev').click()
+    driver.find_element(by=By.CSS_SELECTOR, value='body > div.picker.picker-fixed.picker-open.picker-opened > div > div.picker-body > div > div.picker-cell.picker-minutes > div.picker-cell__control.picker-cell__control--next').click()
     time.sleep(2)
 
-    driver.find_element_by_xpath('/html/body/div[2]/div/div[3]/button[2]').click()
+    driver.find_element(by=By.XPATH,value='/html/body/div[2]/div/div[3]/button[2]').click()
     time.sleep(2)
-    driver.find_element_by_xpath('//*[@id="ion-overlay-4"]/div[2]/div/ion-list/ion-row[1]/ion-col/ion-button').click()
+    driver.find_element(by=By.XPATH,value='//*[@id="ion-overlay-4"]/div[2]/div/ion-list/ion-row[1]/ion-col/ion-button').click()
     time.sleep(2)
-    driver.find_element_by_xpath('//*[@id="main"]/div[1]/ion-content/div[1]/ion-list/div[2]/ion-item/ion-label').click()
+    driver.find_element(by=By.XPATH,value='//*[@id="main"]/div[1]/ion-content/div[1]/ion-list/div[2]/ion-item/ion-label').click()
     
 datas = []
 #'大限/流年'=0,'干支'=1,
@@ -103,300 +103,315 @@ def crawl(url,decade):
     soup = BeautifulSoup(url, "html.parser")
     ganzhi = soup.find_all('td')
 
-    for index in range(0,len(ganzhi)):
-        if index != 5:
-            i = ganzhi[index]
-            try:         
-                chart_unit_ganzhi = i.find(class_ = 'chart-unit-ganzhi')
-                detail_datas = [' ']*46
-                detail_datas [0] = decade
-                detail_datas[1]= chart_unit_ganzhi.text
-            except:
-                pass
-            
-            try:
-                north_star_unit = i.find(class_ = 'north-star-unit')
-                detail_datas[2]= north_star_unit.text[:2]
-            except:
-                pass
-
-            try:
-                natal_morph = i.select_one('div.north-star-unit > span.natal-morph')
-                detail_datas[3]= natal_morph.text
-            except:
-                pass
-
-            try:
-                decade_morph = i.select_one('div.north-star-unit > span.decade-morph')
-                detail_datas[4]= decade_morph.text
-            except:
-                pass
-
-            try:
-                taisui_morph = i.select_one('div.north-star-unit > span.taisui-morph')
-                detail_datas[5]= taisui_morph.text
-            except:
-                pass
-
-            try:
-                south_star_unit = i.find(class_ = 'south-star-unit')
-                if (detail_datas[2]==' '):
-                    detail_datas[2] = south_star_unit.text[:2]
-                else:
-                    detail_datas[6] = south_star_unit.text[:2]
-            except:
-                pass
-
-            try:
-                s_natal_morph = i.select_one('div.south-star-unit > span.natal-morph')
-                if (detail_datas[6]== ' '):
-                    detail_datas[3]= s_natal_morph.text
-                else:
-                    detail_datas[7]= s_natal_morph.text
-            except:
-                pass
-
-            try:
-                s_decade_morph = i.select_one('div.south-star-unit > span.decade-morph')
-                if (detail_datas[6]==' '):
-                    detail_datas[4]= s_decade_morph.text
-                else:
-                    detail_datas[8]= s_decade_morph.text
-            except:
-                pass
-
-            try:
-                s_taisui_morph = i.select_one('div.south-star-unit > span.taisui-morph')
-                if (detail_datas[6]==' '):
-                    detail_datas[5]= s_taisui_morph.text
-                else:
-                    detail_datas[9]= s_taisui_morph.text
-            except:
-                pass
-
-            try:
-                suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
-                if(suppot_star_text.find('祿存')+1):
-                    detail_datas[10] = 1
-                if(suppot_star_text.find('擎羊')+1):
-                    detail_datas[13] = 1  
-                if(suppot_star_text.find('陀羅')+1):
-                    detail_datas[16] = 1
-                if(suppot_star_text.find('紅鸞')+1):
-                    detail_datas[19] = 1    
-            except:
-                pass
-            
-            try:
-                decade_sup_star_unit_text = str(i.find(class_ = 'decade-sup-star-unit'))
-                if(decade_sup_star_unit_text.find('限祿')+1):
-                    detail_datas[11] = 1
-                if(decade_sup_star_unit_text.find('限羊')+1):
-                    detail_datas[14] = 1
-                if(decade_sup_star_unit_text.find('限陀')+1):
-                    detail_datas[17] = 1
-            except:
-                pass
-
-            try:
-                taisui_sup_star_unit_text = str(i.find(class_ = 'taisui-sup-star-unit'))
-                if(taisui_sup_star_unit_text.find('年祿')+1):
-                    detail_datas[12] = 1
-                if(taisui_sup_star_unit_text.find('年羊')+1):
-                    detail_datas[15] = 1
-                if(taisui_sup_star_unit_text.find('年陀')+1):
-                    detail_datas[18] = 1
-            except:
-                pass
-
-            try:
-                suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
-                if(suppot_star_text.find('火星')+1):
-                    detail_datas[19] = 1
-                if(suppot_star_text.find('鈴星')+1):
-                    detail_datas[20] = 1
-            except:
-                pass
-
-            try:
-                suppot_star_text = str(i.find_all(class_ = 'support-star-unit'))
-                if(suppot_star_text.find('地空')+1):
-                    detail_datas[21] = 1
-                if(suppot_star_text.find('地劫')+1):
-                    detail_datas[22] = 1
-            except:
-                pass
-
-            try:
-                suppot_star_text = str(i.find_all(class_ = 'extra-star-unit'))
-                if(suppot_star_text.find('紅鸞')+1):
-                    detail_datas[23] = 1
-            except:
-                pass
+    ganzhi_new = []
+    ganzhi_new.append(ganzhi[11])
+    ganzhi_new.append(ganzhi[10])
+    ganzhi_new.append(ganzhi[9])
+    ganzhi_new.append(ganzhi[7])
+    ganzhi_new.append(ganzhi[4])
+    ganzhi_new.append(ganzhi[0])
+    ganzhi_new.append(ganzhi[1])
+    ganzhi_new.append(ganzhi[2])
+    ganzhi_new.append(ganzhi[3])
+    ganzhi_new.append(ganzhi[6])
+    ganzhi_new.append(ganzhi[8])
+    ganzhi_new.append(ganzhi[12])
 
 
-            try:
-                taisui_sup_star_unit_text = str(i.find(class_ = 'taisui-sup-star-unit'))
-                if(taisui_sup_star_unit_text.find('年鸞')+1):
-                    detail_datas[24] = 1
-            except:
-                pass
+    for index in range(0,len(ganzhi_new)):
+        # if index != 5:
+        i = ganzhi_new[index]
+        try:         
+            chart_unit_ganzhi = i.find(class_ = 'chart-unit-ganzhi')
+            detail_datas = [' ']*46
+            detail_datas [0] = decade
+            detail_datas[1]= chart_unit_ganzhi.text
+        except:
+            pass
+        
+        try:
+            north_star_unit = i.find(class_ = 'north-star-unit')
+            detail_datas[2]= north_star_unit.text[:2]
+        except:
+            pass
 
-            try:
-                suppot_star_text = str(i.find_all(class_ = 'extra-star-unit'))
-                if(suppot_star_text.find('天喜')+1):
-                    detail_datas[25] = 1
-            except:
-                pass
+        try:
+            natal_morph = i.select_one('div.north-star-unit > span.natal-morph')
+            detail_datas[3]= natal_morph.text
+        except:
+            pass
+
+        try:
+            decade_morph = i.select_one('div.north-star-unit > span.decade-morph')
+            detail_datas[4]= decade_morph.text
+        except:
+            pass
+
+        try:
+            taisui_morph = i.select_one('div.north-star-unit > span.taisui-morph')
+            detail_datas[5]= taisui_morph.text
+        except:
+            pass
+
+        try:
+            south_star_unit = i.find(class_ = 'south-star-unit')
+            if (detail_datas[2]==' '):
+                detail_datas[2] = south_star_unit.text[:2]
+            else:
+                detail_datas[6] = south_star_unit.text[:2]
+        except:
+            pass
+
+        try:
+            s_natal_morph = i.select_one('div.south-star-unit > span.natal-morph')
+            if (detail_datas[6]== ' '):
+                detail_datas[3]= s_natal_morph.text
+            else:
+                detail_datas[7]= s_natal_morph.text
+        except:
+            pass
+
+        try:
+            s_decade_morph = i.select_one('div.south-star-unit > span.decade-morph')
+            if (detail_datas[6]==' '):
+                detail_datas[4]= s_decade_morph.text
+            else:
+                detail_datas[8]= s_decade_morph.text
+        except:
+            pass
+
+        try:
+            s_taisui_morph = i.select_one('div.south-star-unit > span.taisui-morph')
+            if (detail_datas[6]==' '):
+                detail_datas[5]= s_taisui_morph.text
+            else:
+                detail_datas[9]= s_taisui_morph.text
+        except:
+            pass
+
+        try:
+            suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
+            if(suppot_star_text.find('祿存')+1):
+                detail_datas[10] = 1
+            if(suppot_star_text.find('擎羊')+1):
+                detail_datas[13] = 1  
+            if(suppot_star_text.find('陀羅')+1):
+                detail_datas[16] = 1
+            if(suppot_star_text.find('紅鸞')+1):
+                detail_datas[19] = 1    
+        except:
+            pass
+        
+        try:
+            decade_sup_star_unit_text = str(i.find(class_ = 'decade-sup-star-unit'))
+            if(decade_sup_star_unit_text.find('限祿')+1):
+                detail_datas[11] = 1
+            if(decade_sup_star_unit_text.find('限羊')+1):
+                detail_datas[14] = 1
+            if(decade_sup_star_unit_text.find('限陀')+1):
+                detail_datas[17] = 1
+        except:
+            pass
+
+        try:
+            taisui_sup_star_unit_text = str(i.find(class_ = 'taisui-sup-star-unit'))
+            if(taisui_sup_star_unit_text.find('年祿')+1):
+                detail_datas[12] = 1
+            if(taisui_sup_star_unit_text.find('年羊')+1):
+                detail_datas[15] = 1
+            if(taisui_sup_star_unit_text.find('年陀')+1):
+                detail_datas[18] = 1
+        except:
+            pass
+
+        try:
+            suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
+            if(suppot_star_text.find('火星')+1):
+                detail_datas[19] = 1
+            if(suppot_star_text.find('鈴星')+1):
+                detail_datas[20] = 1
+        except:
+            pass
+
+        try:
+            suppot_star_text = str(i.find_all(class_ = 'support-star-unit'))
+            if(suppot_star_text.find('地空')+1):
+                detail_datas[21] = 1
+            if(suppot_star_text.find('地劫')+1):
+                detail_datas[22] = 1
+        except:
+            pass
+
+        try:
+            suppot_star_text = str(i.find_all(class_ = 'extra-star-unit'))
+            if(suppot_star_text.find('紅鸞')+1):
+                detail_datas[23] = 1
+        except:
+            pass
 
 
-            try:
-                taisui_sup_star_unit_text = str(i.find(class_ = 'taisui-sup-star-unit'))
-                if(taisui_sup_star_unit_text.find('年喜')+1):
-                    detail_datas[26] = 1
-            except:
-                pass
+        try:
+            taisui_sup_star_unit_text = str(i.find(class_ = 'taisui-sup-star-unit'))
+            if(taisui_sup_star_unit_text.find('年鸞')+1):
+                detail_datas[24] = 1
+        except:
+            pass
+
+        try:
+            suppot_star_text = str(i.find_all(class_ = 'extra-star-unit'))
+            if(suppot_star_text.find('天喜')+1):
+                detail_datas[25] = 1
+        except:
+            pass
 
 
-            try:
-                suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
-                if(suppot_star_text.find('文昌')+1):
-                    detail_datas[27] = 1
-                    natal_morph = i.select_one('div.support-star-unit > span.natal-morph')
-                    detail_datas[28]= natal_morph.text
-                    decade_morph = i.select_one('div.support-star-unit > span.decade-morph')
-                    detail_datas[29]= decade_morph.text
-                    taisui_morph = i.select_one('div.support-star-unit > span.taisui-morph')
-                    detail_datas[30]= taisui_morph.text
-            except:
-                pass
+        try:
+            taisui_sup_star_unit_text = str(i.find(class_ = 'taisui-sup-star-unit'))
+            if(taisui_sup_star_unit_text.find('年喜')+1):
+                detail_datas[26] = 1
+        except:
+            pass
 
-            try:
-                suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
-                if(suppot_star_text.find('文曲')+1):
-                    detail_datas[31] = 1
-                    natal_morph = i.select_one('div.support-star-unit > span.natal-morph')
-            except:
-                pass
 
-            try:
-                suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
-                if(suppot_star_text.find('文曲')+1):
-                    natal_morph = i.select_one('div.support-star-unit > span.natal-morph')
-                    detail_datas[32]= natal_morph.text
-            except:
-                pass
+        try:
+            suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
+            if(suppot_star_text.find('文昌')+1):
+                detail_datas[27] = 1
+                natal_morph = i.select_one('div.support-star-unit > span.natal-morph')
+                detail_datas[28]= natal_morph.text
+                decade_morph = i.select_one('div.support-star-unit > span.decade-morph')
+                detail_datas[29]= decade_morph.text
+                taisui_morph = i.select_one('div.support-star-unit > span.taisui-morph')
+                detail_datas[30]= taisui_morph.text
+        except:
+            pass
 
-            try:
-                suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
-                if(suppot_star_text.find('文曲')+1):
-                    decade_morph = i.select_one('div.support-star-unit > span.decade-morph')
-                    detail_datas[33]= decade_morph.text
-            except:
-                pass
+        try:
+            suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
+            if(suppot_star_text.find('文曲')+1):
+                detail_datas[31] = 1
+                natal_morph = i.select_one('div.support-star-unit > span.natal-morph')
+        except:
+            pass
 
-            try:
-                suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
-                if(suppot_star_text.find('文曲')+1):
-                    taisui_morph = i.select_one('div.support-star-unit > span.taisui-morph')
-                    detail_datas[34]= taisui_morph.text
-            except:
-                pass
+        try:
+            suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
+            if(suppot_star_text.find('文曲')+1):
+                natal_morph = i.select_one('div.support-star-unit > span.natal-morph')
+                detail_datas[32]= natal_morph.text
+        except:
+            pass
 
-            try:
-                suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
-                if(suppot_star_text.find('左輔')+1):
-                    detail_datas[35] = 1
-            except:
-                pass
+        try:
+            suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
+            if(suppot_star_text.find('文曲')+1):
+                decade_morph = i.select_one('div.support-star-unit > span.decade-morph')
+                detail_datas[33]= decade_morph.text
+        except:
+            pass
 
-            try:
-                suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
-                if(suppot_star_text.find('左輔')+1):
-                    natal_morph = i.select_one('div.support-star-unit > span.natal-morph')
-                    detail_datas[36]= natal_morph.text
-            except:
-                pass
+        try:
+            suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
+            if(suppot_star_text.find('文曲')+1):
+                taisui_morph = i.select_one('div.support-star-unit > span.taisui-morph')
+                detail_datas[34]= taisui_morph.text
+        except:
+            pass
 
-            try:
-                suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
-                if(suppot_star_text.find('左輔')+1):
-                    decade_morph = i.select_one('div.support-star-unit > span.decade-morph')
-                    detail_datas[37]= decade_morph.text
-            except:
-                pass
+        try:
+            suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
+            if(suppot_star_text.find('左輔')+1):
+                detail_datas[35] = 1
+        except:
+            pass
 
-            try:
-                suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
-                if(suppot_star_text.find('左輔')+1):
-                    taisui_morph = i.select_one('div.support-star-unit > span.taisui-morph')
-                    detail_datas[38]= taisui_morph.text
-            except:
-                pass
+        try:
+            suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
+            if(suppot_star_text.find('左輔')+1):
+                natal_morph = i.select_one('div.support-star-unit > span.natal-morph')
+                detail_datas[36]= natal_morph.text
+        except:
+            pass
 
-            try:
-                suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
-                if(suppot_star_text.find('右弼')+1):
-                    detail_datas[39] = 1
-            except:
-                pass
+        try:
+            suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
+            if(suppot_star_text.find('左輔')+1):
+                decade_morph = i.select_one('div.support-star-unit > span.decade-morph')
+                detail_datas[37]= decade_morph.text
+        except:
+            pass
 
-            try:
-                suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
-                if(suppot_star_text.find('右弼')+1):
-                    natal_morph = i.select_one('div.support-star-unit > span.natal-morph')
-                    detail_datas[40]= natal_morph.text
-            except:
-                pass
+        try:
+            suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
+            if(suppot_star_text.find('左輔')+1):
+                taisui_morph = i.select_one('div.support-star-unit > span.taisui-morph')
+                detail_datas[38]= taisui_morph.text
+        except:
+            pass
 
-            try:
-                suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
-                if(suppot_star_text.find('右弼')+1):
-                    decade_morph = i.select_one('div.support-star-unit > span.decade-morph')
-                    detail_datas[41]= decade_morph.text
-            except:
-                pass
+        try:
+            suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
+            if(suppot_star_text.find('右弼')+1):
+                detail_datas[39] = 1
+        except:
+            pass
 
-            try:
-                suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
-                if(suppot_star_text.find('右弼')+1):
-                    taisui_morph = i.select_one('div.support-star-unit > span.taisui-morph')
-                    detail_datas[42]= taisui_morph.text
-            except:
-                pass
+        try:
+            suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
+            if(suppot_star_text.find('右弼')+1):
+                natal_morph = i.select_one('div.support-star-unit > span.natal-morph')
+                detail_datas[40]= natal_morph.text
+        except:
+            pass
 
-            try:
-                chart_unit_decade_palace = i.find(class_ = 'chart-unit-decade-palace')
-                detail_datas[43] = chart_unit_decade_palace.text
-            except:
-                pass
+        try:
+            suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
+            if(suppot_star_text.find('右弼')+1):
+                decade_morph = i.select_one('div.support-star-unit > span.decade-morph')
+                detail_datas[41]= decade_morph.text
+        except:
+            pass
 
-            try:
-                chart_unit_natal_palace = i.find(class_ ='chart-unit-natal-palace')
-                detail_datas[44]= chart_unit_natal_palace.text
-            except:
-                pass
+        try:
+            suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
+            if(suppot_star_text.find('右弼')+1):
+                taisui_morph = i.select_one('div.support-star-unit > span.taisui-morph')
+                detail_datas[42]= taisui_morph.text
+        except:
+            pass
 
-            try:
-                chart_unit_boshi = i.find(class_ = 'chart-unit-boshi')
-                detail_datas[45]=chart_unit_boshi.text
-            except:
-                pass
+        try:
+            chart_unit_decade_palace = i.find(class_ = 'chart-unit-decade-palace')
+            detail_datas[43] = chart_unit_decade_palace.text
+        except:
+            pass
 
-            datas.append(detail_datas)
+        try:
+            chart_unit_natal_palace = i.find(class_ ='chart-unit-natal-palace')
+            detail_datas[44]= chart_unit_natal_palace.text
+        except:
+            pass
+
+        try:
+            chart_unit_boshi = i.find(class_ = 'chart-unit-boshi')
+            detail_datas[45]=chart_unit_boshi.text
+        except:
+            pass
+
+        datas.append(detail_datas)
 
 def write_to_csv(filename):
     crawl(driver.page_source,'本命')
     for i in range(1,11):
         shen_xpath = '//*[@id="root"]/ion-app/div[2]/ion-footer/div/div[1]/div['+str(i)+']'
         shen_source = str(i)+'限'    
-        driver.find_element_by_xpath(shen_xpath).click()
+        driver.find_element(by=By.XPATH,value=shen_xpath).click()
         crawl(driver.page_source,shen_source)
 
         for i in range(1,11):
             year_xpath = '//*[@id="root"]/ion-app/div[2]/ion-footer/div/div[2]/div['+str(i)+']/span[1]'
-            year_source = driver.find_element_by_xpath(year_xpath).text
-            driver.find_element_by_xpath(year_xpath).click()
+            year_source = driver.find_element(by=By.XPATH,value=year_xpath).text
+            driver.find_element(by=By.XPATH,value=year_xpath).click()
             crawl(driver.page_source,year_source)
 
     with open(filename, 'w', newline='',encoding='big5') as csvfile:
