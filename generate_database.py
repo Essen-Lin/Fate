@@ -459,3 +459,4 @@ if __name__ == "__main__":
 
     time.sleep(2)
     write_to_csv('./data/'+argv.Name+'-'+(argv.Year+'-'+str(argv.Month)+'-'+argv.Day+'-'+argv.hour+'-'+argv.mins+'.csv'))
+    driver.quit()
