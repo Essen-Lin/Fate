@@ -27,6 +27,6 @@ for i in filename_folder:
 
 for i in filename_all_2:
     # print(filename_all.index(i))
-    run_list.append(i)
+    run_list.append(filename_all.index(i))
 
 print(run_list)
