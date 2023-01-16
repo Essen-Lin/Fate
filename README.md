@@ -44,13 +44,57 @@ pip3 install [packageName]
     * [-n] : 受測者姓名
     * [-g] : 受測者性別 （woman/w or man/m)
     * [-Y] : 出生西元年
-4. 在data這個資料夾下可以找到對應生成的資料庫
+    * [-M] : 出生月份
+    * [-D] : 出生日期
+    * [-o] : 出生時間（時）
+    * [-m] : 出生時間（分）
+
+4. 在data這個資料夾下可以找到對應生成的[資料庫](https://github.com/Essen-Lin/Fate/blob/main/data/Essen-1996-7-10-15-30.csv)
 
 ```
 
-python 3.9 [-n Name] [-g Gender] [-Y Year] [-M Month] [-D Day] [-o hour] [-m mins]
+python3.9 generate_database.py [-n Name] [-g Gender] [-Y Year] [-M Month] [-D Day] [-o hour] [-m mins]
 
 Example:
 python3.9 generate_database.py -n Husan -g woman -Y 1996 -M 7 -D 10 -o 15 -m 30
 
 ```
+
+## 將問卷資料自動輸出成命盤資料庫
+
+1. 來自聖軒老師提供的 [命盤資料](https://)
+![](https://i.imgur.com/f6X0M3Y.png)
+
+2. 透過 剛剛的自動化生成程式 [generate_database.py](https://github.com/Essen-Lin/Fate/blob/main/generate_database.py)，輸入對應的指令
+- id 對應  [-n] : 受測者姓名
+- v1 對應 [-g] : 受測者性別 （woman/w or man/m)
+- year 對應 [-Y] : 出生西元年
+- s.mon 對應 [-M] : 出生月份
+- s.day 對應 [-D] : 出生日期
+- s.hour 對應 [-o] : 出生時間（時）
+- s.min 對應 [-m] : 出生時間（分）
+
+
+
+| id         |     v1     | year       | s.mon    |  s.day   | s.hour         | s.min          |
+| ---------- |:----------:| ---------- | -------- |:--------:| -------------- | -------------- |
+| [-n]       |    [-g]    | [-Y]       | [-M]     |   [-D]   | [-o]           | [-m]           |
+| 受測者姓名 | 受測者性別 | 出生西元年 | 出生月份 | 出生日期 | 出生時間（時） | 出生時間（分） |
+
+
+3. 寫成腳本程式 並且 執行程式
+
+```
+python3 run_tscs992.py
+```
+
+4. 在data這個資料夾下可以找到對應生成的[資料庫](https://github.com/Essen-Lin/Fate/blob/main/data)
+* [100個測試資料](https://github.com/Essen-Lin/Fate/tree/main/data/100_tscs992)
+
+
+    
+
+
+---
+> [name=Essen Lin]
+>[time=Mon, Dec 19, 2022 4:09 PM]
