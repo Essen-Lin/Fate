@@ -11,7 +11,7 @@ df = pd.read_csv(path, usecols=usecols,encoding='Big5')
 
 data_size = len(df)
 print(data_size)
-for i in range(208,data_size):
+for i in range(data_size):
     print('id: ',str(df.at[i,'id']),'num: ',i)
     if df.at[i,'v1'] == '男':
         gender = 'm'
