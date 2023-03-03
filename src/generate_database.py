@@ -83,20 +83,20 @@ def set_birth_date(year,month,day,hours,mins):
     
 datas = []
 #'大限/流年'=0,'干支'=1,
-fieldnames = ['大限/流年','干支',
-'主星1','主星1本命四化','主星1大限四化','主星1流年四化', #'主星1'=2,'主星1本命四化'=3,'主星1大限四化'=4,'主星1流年四化'=5
-'主星2','主星2本命四化','主星2大限四化','主星2流年四化', #'主星2'=6,'主星2本命四化'=7,'主星2大限四化'=8,'主星2流年四化'=9
-'本命祿存','大限祿存','流年祿存',   #'本命祿存' = 10 ,'大限祿存' = 11 ,'流年祿存' = 12 
-'本命擎羊','大限擎羊','流年擎羊',   #'本命擎羊' = 13 ,'大限擎羊' = 14 ,'流年擎羊' = 15 
-'本命陀羅','大限陀羅','流年陀羅',   #'本命陀羅' = 16 ,'大限陀羅' = 17 ,'流年陀羅' = 18
-'火星','鈴星','地空','地劫', #'火星' = 19 ,'鈴星' =20 ,'地空' =21 ,'地劫' =22 
-'本命紅鸞','流年紅鸞',   #'本命紅鸞' = 23 ,'流年紅鸞' = 24
-'本命天喜','流年天喜',   #'本命天喜' = 25 ,'流年天喜' = 26
-'文昌','文昌本命四化','文昌大限四化','文昌流年四化', # '文昌' = 27 ,'文昌本命四化' = 28 ,'文昌大限四化' = 29 ,'文昌流年四化' = 30
-'文曲','文曲本命四化','文曲大限四化','文曲流年四化', # '文曲' = 31 ,'文曲本命四化' = 32 ,'文曲大限四化' = 33 ,'文曲流年四化' = 34
-'左輔','左輔本命四化','左輔大限四化','左輔流年四化', # '左輔' = 35 ,'左輔本命四化' = 36 ,'左輔大限四化' = 38 ,'左輔流年四化' = 38
-'右弼','右弼本命四化','右弼大限四化','右弼流年四化', # '右弼' = 39 ,'右弼本命四化' = 40 ,'右弼大限四化' = 41 ,'右弼流年四化' = 42
-'大限宮位', '本命宮位', 'boshi'] # '大限宮位' = 43, '本命宮位' = 44, 'boshi' = 45
+fieldnames = ['大限/流年','天干','地支','大限宮位', '本命宮位', # '天干' = 1,'地支' =2 '大限宮位' = 3, '本命宮位' = 4
+'主星1','主星1本命四化','主星1大限四化','主星1流年四化', #'主星1'=5,'主星1本命四化'=6,'主星1大限四化'=7,'主星1流年四化'=8
+'主星2','主星2本命四化','主星2大限四化','主星2流年四化', #'主星2'=9,'主星2本命四化'=10,'主星2大限四化'=11,'主星2流年四化'=12
+'本命祿存','大限祿存','流年祿存',   #'本命祿存' = 13 ,'大限祿存' = 14 ,'流年祿存' = 15 
+'本命擎羊','大限擎羊','流年擎羊',   #'本命擎羊' = 16 ,'大限擎羊' = 17 ,'流年擎羊' = 18 
+'本命陀羅','大限陀羅','流年陀羅',   #'本命陀羅' = 19 ,'大限陀羅' = 20 ,'流年陀羅' = 21
+'火星','鈴星','地空','地劫', #'火星' = 22 ,'鈴星' =23 ,'地空' =24 ,'地劫' =25 
+'本命紅鸞','流年紅鸞',   #'本命紅鸞' = 26 ,'流年紅鸞' = 27
+'本命天喜','流年天喜',   #'本命天喜' = 28 ,'流年天喜' = 29
+'文昌','文昌本命四化','文昌大限四化','文昌流年四化', # '文昌' = 30 ,'文昌本命四化' = 31 ,'文昌大限四化' = 32 ,'文昌流年四化' = 33
+'文曲','文曲本命四化','文曲大限四化','文曲流年四化', # '文曲' = 34 ,'文曲本命四化' = 35 ,'文曲大限四化' = 36 ,'文曲流年四化' = 37
+'左輔','左輔本命四化','左輔大限四化','左輔流年四化', # '左輔' = 38 ,'左輔本命四化' = 39 ,'左輔大限四化' = 40 ,'左輔流年四化' = 41
+'右弼','右弼本命四化','右弼大限四化','右弼流年四化', # '右弼' = 42 ,'右弼本命四化' = 43 ,'右弼大限四化' = 44 ,'右弼流年四化' = 45
+'boshi'] # 'boshi' = 46
 datas.append(fieldnames)
 
 def crawl(url,decade):
@@ -123,129 +123,141 @@ def crawl(url,decade):
         i = ganzhi_new[index]
         try:         
             chart_unit_ganzhi = i.find(class_ = 'chart-unit-ganzhi')
-            detail_datas = [' ']*46
+            detail_datas = [' ']*47
             detail_datas [0] = decade
-            detail_datas[1]= chart_unit_ganzhi.text
+            detail_datas[1]= chart_unit_ganzhi.text[0]
+            detail_datas[2]= chart_unit_ganzhi.text[1]
+
+        except:
+            pass
+
+        try:
+            chart_unit_decade_palace = i.find(class_ = 'chart-unit-decade-palace')
+            detail_datas[3] = chart_unit_decade_palace.text
+        except:
+            pass
+
+        try:
+            chart_unit_natal_palace = i.find(class_ ='chart-unit-natal-palace')
+            detail_datas[4]= chart_unit_natal_palace.text
         except:
             pass
         
         try:
             north_star_unit = i.find(class_ = 'north-star-unit')
-            detail_datas[2]= north_star_unit.text[:2]
+            detail_datas[5]= north_star_unit.text[:2]
         except:
             pass
 
         try:
             natal_morph = i.select_one('div.north-star-unit > span.natal-morph')
-            detail_datas[3]= natal_morph.text
+            detail_datas[6]= natal_morph.text
         except:
             pass
 
         try:
             decade_morph = i.select_one('div.north-star-unit > span.decade-morph')
-            detail_datas[4]= decade_morph.text
+            detail_datas[7]= decade_morph.text
         except:
             pass
 
         try:
             taisui_morph = i.select_one('div.north-star-unit > span.taisui-morph')
-            detail_datas[5]= taisui_morph.text
+            detail_datas[8]= taisui_morph.text
         except:
             pass
 
         try:
             south_star_unit = i.find(class_ = 'south-star-unit')
-            if (detail_datas[2]==' '):
-                detail_datas[2] = south_star_unit.text[:2]
+            if (detail_datas[5]==' '):
+                detail_datas[5] = south_star_unit.text[:2]
             else:
-                detail_datas[6] = south_star_unit.text[:2]
+                detail_datas[9] = south_star_unit.text[:2]
         except:
             pass
 
         try:
             s_natal_morph = i.select_one('div.south-star-unit > span.natal-morph')
-            if (detail_datas[6]== ' '):
-                detail_datas[3]= s_natal_morph.text
+            if (detail_datas[9]== ' '):
+                detail_datas[6]= s_natal_morph.text
             else:
-                detail_datas[7]= s_natal_morph.text
+                detail_datas[10]= s_natal_morph.text
         except:
             pass
 
         try:
             s_decade_morph = i.select_one('div.south-star-unit > span.decade-morph')
-            if (detail_datas[6]==' '):
-                detail_datas[4]= s_decade_morph.text
+            if (detail_datas[9]==' '):
+                detail_datas[7]= s_decade_morph.text
             else:
-                detail_datas[8]= s_decade_morph.text
+                detail_datas[11]= s_decade_morph.text
         except:
             pass
 
         try:
             s_taisui_morph = i.select_one('div.south-star-unit > span.taisui-morph')
-            if (detail_datas[6]==' '):
-                detail_datas[5]= s_taisui_morph.text
+            if (detail_datas[9]==' '):
+                detail_datas[8]= s_taisui_morph.text
             else:
-                detail_datas[9]= s_taisui_morph.text
+                detail_datas[12]= s_taisui_morph.text
         except:
             pass
 
         try:
             suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
             if(suppot_star_text.find('祿存')+1):
-                detail_datas[10] = 1
+                detail_datas[13] = 1
             if(suppot_star_text.find('擎羊')+1):
-                detail_datas[13] = 1  
+                detail_datas[16] = 1  
             if(suppot_star_text.find('陀羅')+1):
-                detail_datas[16] = 1
-            if(suppot_star_text.find('紅鸞')+1):
-                detail_datas[19] = 1    
+                detail_datas[19] = 1  
         except:
             pass
         
         try:
             decade_sup_star_unit_text = str(i.find(class_ = 'decade-sup-star-unit'))
             if(decade_sup_star_unit_text.find('限祿')+1):
-                detail_datas[11] = 1
-            if(decade_sup_star_unit_text.find('限羊')+1):
                 detail_datas[14] = 1
-            if(decade_sup_star_unit_text.find('限陀')+1):
+            if(decade_sup_star_unit_text.find('限羊')+1):
                 detail_datas[17] = 1
+            if(decade_sup_star_unit_text.find('限陀')+1):
+                detail_datas[20] = 1
         except:
             pass
 
         try:
             taisui_sup_star_unit_text = str(i.find(class_ = 'taisui-sup-star-unit'))
             if(taisui_sup_star_unit_text.find('年祿')+1):
-                detail_datas[12] = 1
-            if(taisui_sup_star_unit_text.find('年羊')+1):
                 detail_datas[15] = 1
-            if(taisui_sup_star_unit_text.find('年陀')+1):
+            if(taisui_sup_star_unit_text.find('年羊')+1):
                 detail_datas[18] = 1
+            if(taisui_sup_star_unit_text.find('年陀')+1):
+                detail_datas[21] = 1
         except:
             pass
 
         try:
             suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
             if(suppot_star_text.find('火星')+1):
-                detail_datas[19] = 1
+                detail_datas[22] = 1
             if(suppot_star_text.find('鈴星')+1):
-                detail_datas[20] = 1
+                detail_datas[23] = 1
         except:
             pass
 
         try:
             suppot_star_text = str(i.find_all(class_ = 'support-star-unit'))
             if(suppot_star_text.find('地空')+1):
-                detail_datas[21] = 1
+                detail_datas[24] = 1
             if(suppot_star_text.find('地劫')+1):
-                detail_datas[22] = 1
+                detail_datas[25] = 1
         except:
             pass
 
         try:
             suppot_star_text = str(i.find_all(class_ = 'extra-star-unit'))
             if(suppot_star_text.find('紅鸞')+1):
-                detail_datas[23] = 1
+                detail_datas[26] = 1
         except:
             pass
 
@@ -253,14 +265,14 @@ def crawl(url,decade):
         try:
             taisui_sup_star_unit_text = str(i.find(class_ = 'taisui-sup-star-unit'))
             if(taisui_sup_star_unit_text.find('年鸞')+1):
-                detail_datas[24] = 1
+                detail_datas[27] = 1
         except:
             pass
 
         try:
             suppot_star_text = str(i.find_all(class_ = 'extra-star-unit'))
             if(suppot_star_text.find('天喜')+1):
-                detail_datas[25] = 1
+                detail_datas[28] = 1
         except:
             pass
 
@@ -268,7 +280,7 @@ def crawl(url,decade):
         try:
             taisui_sup_star_unit_text = str(i.find(class_ = 'taisui-sup-star-unit'))
             if(taisui_sup_star_unit_text.find('年喜')+1):
-                detail_datas[26] = 1
+                detail_datas[29] = 1
         except:
             pass
 
@@ -276,20 +288,20 @@ def crawl(url,decade):
         try:
             suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
             if(suppot_star_text.find('文昌')+1):
-                detail_datas[27] = 1
+                detail_datas[30] = 1
                 natal_morph = i.select_one('div.support-star-unit > span.natal-morph')
-                detail_datas[28]= natal_morph.text
+                detail_datas[31]= natal_morph.text
                 decade_morph = i.select_one('div.support-star-unit > span.decade-morph')
-                detail_datas[29]= decade_morph.text
+                detail_datas[32]= decade_morph.text
                 taisui_morph = i.select_one('div.support-star-unit > span.taisui-morph')
-                detail_datas[30]= taisui_morph.text
+                detail_datas[33]= taisui_morph.text
         except:
             pass
 
         try:
             suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
             if(suppot_star_text.find('文曲')+1):
-                detail_datas[31] = 1
+                detail_datas[34] = 1
                 natal_morph = i.select_one('div.support-star-unit > span.natal-morph')
         except:
             pass
@@ -298,7 +310,7 @@ def crawl(url,decade):
             suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
             if(suppot_star_text.find('文曲')+1):
                 natal_morph = i.select_one('div.support-star-unit > span.natal-morph')
-                detail_datas[32]= natal_morph.text
+                detail_datas[35]= natal_morph.text
         except:
             pass
 
@@ -306,7 +318,7 @@ def crawl(url,decade):
             suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
             if(suppot_star_text.find('文曲')+1):
                 decade_morph = i.select_one('div.support-star-unit > span.decade-morph')
-                detail_datas[33]= decade_morph.text
+                detail_datas[36]= decade_morph.text
         except:
             pass
 
@@ -314,14 +326,14 @@ def crawl(url,decade):
             suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
             if(suppot_star_text.find('文曲')+1):
                 taisui_morph = i.select_one('div.support-star-unit > span.taisui-morph')
-                detail_datas[34]= taisui_morph.text
+                detail_datas[37]= taisui_morph.text
         except:
             pass
 
         try:
             suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
             if(suppot_star_text.find('左輔')+1):
-                detail_datas[35] = 1
+                detail_datas[38] = 1
         except:
             pass
 
@@ -329,7 +341,7 @@ def crawl(url,decade):
             suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
             if(suppot_star_text.find('左輔')+1):
                 natal_morph = i.select_one('div.support-star-unit > span.natal-morph')
-                detail_datas[36]= natal_morph.text
+                detail_datas[39]= natal_morph.text
         except:
             pass
 
@@ -337,7 +349,7 @@ def crawl(url,decade):
             suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
             if(suppot_star_text.find('左輔')+1):
                 decade_morph = i.select_one('div.support-star-unit > span.decade-morph')
-                detail_datas[37]= decade_morph.text
+                detail_datas[40]= decade_morph.text
         except:
             pass
 
@@ -345,14 +357,14 @@ def crawl(url,decade):
             suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
             if(suppot_star_text.find('左輔')+1):
                 taisui_morph = i.select_one('div.support-star-unit > span.taisui-morph')
-                detail_datas[38]= taisui_morph.text
+                detail_datas[41]= taisui_morph.text
         except:
             pass
 
         try:
             suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
             if(suppot_star_text.find('右弼')+1):
-                detail_datas[39] = 1
+                detail_datas[42] = 1
         except:
             pass
 
@@ -360,7 +372,7 @@ def crawl(url,decade):
             suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
             if(suppot_star_text.find('右弼')+1):
                 natal_morph = i.select_one('div.support-star-unit > span.natal-morph')
-                detail_datas[40]= natal_morph.text
+                detail_datas[43]= natal_morph.text
         except:
             pass
 
@@ -368,7 +380,7 @@ def crawl(url,decade):
             suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
             if(suppot_star_text.find('右弼')+1):
                 decade_morph = i.select_one('div.support-star-unit > span.decade-morph')
-                detail_datas[41]= decade_morph.text
+                detail_datas[44]= decade_morph.text
         except:
             pass
 
@@ -376,25 +388,14 @@ def crawl(url,decade):
             suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
             if(suppot_star_text.find('右弼')+1):
                 taisui_morph = i.select_one('div.support-star-unit > span.taisui-morph')
-                detail_datas[42]= taisui_morph.text
+                detail_datas[45]= taisui_morph.text
         except:
             pass
 
-        try:
-            chart_unit_decade_palace = i.find(class_ = 'chart-unit-decade-palace')
-            detail_datas[43] = chart_unit_decade_palace.text
-        except:
-            pass
-
-        try:
-            chart_unit_natal_palace = i.find(class_ ='chart-unit-natal-palace')
-            detail_datas[44]= chart_unit_natal_palace.text
-        except:
-            pass
 
         try:
             chart_unit_boshi = i.find(class_ = 'chart-unit-boshi')
-            detail_datas[45]=chart_unit_boshi.text
+            detail_datas[46]=chart_unit_boshi.text
         except:
             pass
 
@@ -458,5 +459,5 @@ if __name__ == "__main__":
     set_birth_date(argv.Year,month,argv.Day,argv.hour,argv.mins) 
 
     time.sleep(2)
-    write_to_csv('../data/1922_tscs992/'+argv.Name+'-'+(argv.Year+'-'+str(argv.Month)+'-'+argv.Day+'-'+argv.hour+'-'+argv.mins+'.csv'))
+    write_to_csv('../data/test/'+argv.Name+'-'+(argv.Year+'-'+str(argv.Month)+'-'+argv.Day+'-'+argv.hour+'-'+argv.mins+'.csv'))
     driver.quit()
