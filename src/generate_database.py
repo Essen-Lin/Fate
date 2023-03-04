@@ -459,5 +459,5 @@ if __name__ == "__main__":
     set_birth_date(argv.Year,month,argv.Day,argv.hour,argv.mins) 
 
     time.sleep(2)
-    write_to_csv('../data/test/'+argv.Name+'-'+(argv.Year+'-'+str(argv.Month)+'-'+argv.Day+'-'+argv.hour+'-'+argv.mins+'.csv'))
+    write_to_csv('../data/1922_tscs992/'+argv.Name+'-'+(argv.Year+'-'+str(argv.Month)+'-'+argv.Day+'-'+argv.hour+'-'+argv.mins+'.csv'))
     driver.quit()

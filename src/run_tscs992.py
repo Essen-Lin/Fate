@@ -6,12 +6,12 @@ path = '../input/tscs992_with_birth_day_randomized.csv'
 #所需的欄位
 usecols = ['id','v1','year', 's.mon', 's.day', 's.hour','s.min']
 df = pd.read_csv(path, usecols=usecols,encoding='Big5')
-# print(df)
-# print(df.head(10))
 
+# print(df.head(10))
+data_list =[541, 769, 1645, 1766]
 data_size = len(df)
 print(data_size)
-for i in range(data_size):
+for i in data_list:
     print('id: ',str(df.at[i,'id']),'num: ',i)
     if df.at[i,'v1'] == '男':
         gender = 'm'

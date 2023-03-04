@@ -278,6 +278,8 @@ def Rule9(shen):
     else:
         return 0
 
+## 運限夫妻宮有化忌
+## 文昌 文曲++ --OK
 def Rule10(shen):
     ## Check ['大限宮位'] == '大夫' 的index為何
     bigfu_id = shen.index[shen['大限宮位'] == '大夫'].to_list()
@@ -285,10 +287,14 @@ def Rule10(shen):
     star_chi_list =[] 
     star_chi_list += shen['主星1本命四化'][bigfu_id].to_list()
     star_chi_list += shen['主星1大限四化'][bigfu_id].to_list()
-    star_chi_list += shen['主星1流年四化'][bigfu_id].to_list()
+    # star_chi_list += shen['主星1流年四化'][bigfu_id].to_list()
     star_chi_list += shen['主星2本命四化'][bigfu_id].to_list()
     star_chi_list += shen['主星2大限四化'][bigfu_id].to_list()
-    star_chi_list += shen['主星2流年四化'][bigfu_id].to_list()
+    # star_chi_list += shen['主星2流年四化'][bigfu_id].to_list()
+    star_chi_list += shen['文昌本命四化'][bigfu_id].to_list()
+    star_chi_list += shen['文昌大限四化'][bigfu_id].to_list()
+    star_chi_list += shen['文曲本命四化'][bigfu_id].to_list()
+    star_chi_list += shen['文曲大限四化'][bigfu_id].to_list()
     # print(star_chi_list)
 
     if '忌' in star_chi_list:
@@ -305,14 +311,14 @@ def Rule11(shen):
     star_chi_list += shen['鈴星'][bigfu_id].to_list()
     star_chi_list += shen['大限擎羊'][bigfu_id].to_list()
     star_chi_list += shen['大限陀羅'][bigfu_id].to_list()
-    print(star_chi_list)
+    # print(star_chi_list)
 
     if '1' in star_chi_list:
         return 1
     else:
         return 0
 
-print(Rule11(shen))
+# print(Rule11(shen))
 
 def Rule12(shen):
 
@@ -323,11 +329,168 @@ def Rule12(shen):
     star_chi_list += shen['火星'][bigfu_id].to_list()
     star_chi_list += shen['鈴星'][bigfu_id].to_list()
     star_chi_list += shen['大限擎羊'][bigfu_id].to_list()
-    print(star_chi_list)
+    # print(star_chi_list)
 
     if '1' in star_chi_list:
         return 1
     else:
         return 0
     
-print(Rule12(shen))
+# print(Rule12(shen))
+
+def Rule13(shen):
+        ## Check ['大限宮位'] == '大夫' 的index為何
+    bigmin_id = shen.index[shen['大限宮位'] == '大命'].to_list()
+    bigchen_id = shen.index[shen['大限宮位'] == '大遷'].to_list()
+
+    star_red_w_list =[] 
+    star_red_w_list += shen['本命紅鸞'][bigmin_id].to_list()
+    star_red_w_list += shen['本命紅鸞'][bigchen_id].to_list()
+    star_red_w_list += shen['本命天喜'][bigmin_id].to_list()
+    star_red_w_list += shen['本命天喜'][bigchen_id].to_list()
+    # print(star_red_w_list)
+
+    if '1' in star_red_w_list:
+        return 1
+    else:
+        return 0
+
+# print(Rule13(shen))
+
+def Rule14(shen):
+            ## Check ['大限宮位'] == '大夫' 的index為何
+    bigmin_id = shen.index[shen['大限宮位'] == '大命'].to_list()
+
+    star_red_w_list =[] 
+    star_red_w_list += shen['本命紅鸞'][bigmin_id].to_list()
+    # print(star_red_w_list)
+
+    if '1' in star_red_w_list:
+        return 1
+    else:
+        return 0
+
+def Rule15(shen):
+    ## Check ['大限宮位'] == '大夫' 的index為何
+    bigfu_id = shen.index[shen['大限宮位'] == '大夫'].to_list()
+    bigquan_id = shen.index[shen['大限宮位'] == '大官'].to_list()
+
+    star_red_w_list =[] 
+    star_red_w_list += shen['本命紅鸞'][bigfu_id].to_list()
+    star_red_w_list += shen['本命紅鸞'][bigquan_id].to_list()
+    star_red_w_list += shen['本命天喜'][bigfu_id].to_list()
+    star_red_w_list += shen['本命天喜'][bigquan_id].to_list()
+    # print(star_red_w_list)
+
+    if '1' in star_red_w_list:
+        return 1
+    else:
+        return 0
+
+def Rule16(shen):
+    ## Check ['大限宮位'] == '大夫' 的index為何
+    bigfu_id = shen.index[shen['大限宮位'] == '大夫'].to_list()
+
+    star_red_w_list =[] 
+    star_red_w_list += shen['本命紅鸞'][bigfu_id].to_list()
+    # print(star_red_w_list)
+
+    if '1' in star_red_w_list:
+        return 1
+    else:
+        return 0
+
+
+def Rule17(shen):
+        ## Check ['大限宮位'] == '大夫' 的index為何
+    bigzhi_id = shen.index[shen['大限宮位'] == '大子'].to_list()
+    bigten_id = shen.index[shen['大限宮位'] == '大田'].to_list()
+
+    star_red_w_list =[]
+    star_red_w_list += shen['本命紅鸞'][bigzhi_id].to_list()
+    star_red_w_list += shen['本命紅鸞'][bigten_id].to_list() 
+    star_red_w_list += shen['本命天喜'][bigzhi_id].to_list()
+    star_red_w_list += shen['本命天喜'][bigten_id].to_list()
+    print(star_red_w_list)
+
+    if '1' in star_red_w_list:
+        return 1
+    else:
+        return 0
+
+def Rule18(shen):
+    bigfu_id = shen.index[shen['大限宮位'] == '大夫'].to_list()
+    benfu_id = shen.index[shen['本命宮位'] == '夫妻'].to_list()
+    print(bigfu_id)
+    print(benfu_id)
+
+    if bigfu_id[0] == benfu_id[0]:
+        return 1
+    else:
+        return 0
+    
+def Rule19(shen):
+    bigzhi_id = shen.index[shen['大限宮位'] == '大子'].to_list()
+    benzhi_id = shen.index[shen['本命宮位'] == '子女'].to_list()
+    print(bigzhi_id)
+    print(benzhi_id)
+
+    if bigzhi_id[0] == benzhi_id[0]:
+        return 1
+    else:
+        return 0
+
+def Rule20(shen):
+    bigten_id = shen.index[shen['大限宮位'] == '大田'].to_list()
+    benten_id = shen.index[shen['本命宮位'] == '田宅'].to_list()
+    print(bigten_id)
+    print(benten_id)
+
+    if bigten_id[0] == benten_id[0]:
+        return 1
+    else:
+        return 0
+    
+def generate_love_rule():
+    result_col = ['ID','大限','Rule1','Rule2','Rule3','Rule4','Rule5','Rule6','Rule7','Rule8','Rule9','Rule10',
+                  'Rule11','Rule12','Rule13','Rule14','Rule15','Rule16','Rule17','Rule18','Rule19','Rule20']
+    result=[]
+    result.append(result_col)
+
+    for i in range(1,11):
+        data = []
+        data.append(1)
+        data.append(i)
+        print('run:',i)
+
+        start = 12+132*(i-1)
+        ended = 23+132*(i-1)
+        # print('start:',start,'end:',ended)
+        shen = source.iloc[start:ended+1]
+        data.append(Rule1(shen))
+        data.append(Rule2(shen))
+        data.append(Rule3(shen,start,ended))
+        data.append(Rule4(shen,start,ended))
+        data.append(Rule5(shen,start,ended))
+        data.append(Rule6(shen,start,ended))
+        data.append(Rule7(shen))
+        data.append(Rule8(shen))
+        data.append(Rule9(shen))
+        data.append(Rule10(shen))
+        data.append(Rule11(shen))
+        data.append(Rule12(shen))
+        data.append(Rule13(shen))
+        data.append(Rule14(shen))
+        data.append(Rule15(shen))
+        data.append(Rule16(shen))
+        data.append(Rule17(shen))
+        data.append(Rule18(shen))
+        data.append(Rule19(shen))
+        data.append(Rule20(shen))
+        result.append(data)
+    pd.DataFrame(result)
+    print(pd.DataFrame(result))
+
+
+generate_love_rule()
+# print(result)
