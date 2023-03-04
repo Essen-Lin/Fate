@@ -476,23 +476,25 @@ class MarryID:
         return pd.DataFrame(result)
 
 # source = pd.read_csv("/Users/essen/LocalData/NCTU/Fate/data/test/Husan-1996-7-10-15-30.csv", encoding= 'big5', usecols=usecols)
+if __name__ == '__main__':
+    Dir_path = glob.glob(os.path.join("../data/1922_tscs992",'*'))
+    ID_list =[]
+    ID_date =[]
+    for i in Dir_path:
+        ID_list.append(int(i.split('/')[3].split('-')[0]))
+        ID_date.append('-'.join(i.split('/')[3].split('-')[1:]))
+    ID_path = dict(map(lambda i,j : (i,j) , ID_list,ID_date))
+    ID_path = sorted(ID_path.items())
 
-Dir_path = glob.glob(os.path.join("../data/1922_tscs992",'*'))
-# ID_list =[]
-# for i in Dir_path:
-#    ID_list.append(int(i.split('/')[3].split('-')[0]))
-# ID_list.sort()
-# print(ID_list)
 
+    result_col = ['ID','大限','Rule1','Rule2','Rule3','Rule4','Rule5','Rule6','Rule7','Rule8','Rule9','Rule10',
+                        'Rule11','Rule12','Rule13','Rule14','Rule15','Rule16','Rule17','Rule18','Rule19','Rule20']
 
-result_col = ['ID','大限','Rule1','Rule2','Rule3','Rule4','Rule5','Rule6','Rule7','Rule8','Rule9','Rule10',
-                     'Rule11','Rule12','Rule13','Rule14','Rule15','Rule16','Rule17','Rule18','Rule19','Rule20']
+    result = pd.DataFrame([result_col])
+    for i in range(len(ID_path)): 
+        path = '../data/1922_tscs992/'+str(ID_path[i][0])+'-'+ID_path[i][1]
+        Obj = MarryID(path)
+        df = Obj.generate_love_rule()
+        result = pd.concat([result,df])
 
-result = pd.DataFrame([result_col])
-for i in Dir_path[0:3]: 
-    path = i
-    Obj = MarryID(path)
-    df = Obj.generate_love_rule()
-    result = pd.concat([result,df])
-
-result.to_csv('/Users/essen/LocalData/NCTU/Fate/src/love_rule_1922_tscs.csv')
+    result.to_csv('/Users/essen/LocalData/NCTU/Fate/data/love_rule_1922_tscs.csv',encoding='Big5', index=False,header=False)
