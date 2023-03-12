@@ -8,7 +8,7 @@ usecols = ['id','v1','year', 's.mon', 's.day', 's.hour','s.min']
 df = pd.read_csv(path, usecols=usecols,encoding='Big5')
 
 # print(df.head(10))
-data_list =[541, 769, 1645, 1766]
+data_list = [541, 810, 1645, 1766]
 data_size = len(df)
 print(data_size)
 for i in data_list:

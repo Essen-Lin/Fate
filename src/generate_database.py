@@ -284,19 +284,38 @@ def crawl(url,decade):
         except:
             pass
 
-
+## 文昌
         try:
             suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
             if(suppot_star_text.find('文昌')+1):
                 detail_datas[30] = 1
+        except:
+            pass
+
+        try:
+            suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
+            if(suppot_star_text.find('文昌')+1):
                 natal_morph = i.select_one('div.support-star-unit > span.natal-morph')
                 detail_datas[31]= natal_morph.text
+        except:
+            pass
+
+        try:
+            suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
+            if(suppot_star_text.find('文昌')+1):
                 decade_morph = i.select_one('div.support-star-unit > span.decade-morph')
                 detail_datas[32]= decade_morph.text
+        except:
+            pass
+
+        try:
+            suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
+            if(suppot_star_text.find('文昌')+1):
                 taisui_morph = i.select_one('div.support-star-unit > span.taisui-morph')
                 detail_datas[33]= taisui_morph.text
         except:
             pass
+
 
         try:
             suppot_star_text = str(i.find_all('span',{'class':'support-star-text'}))
