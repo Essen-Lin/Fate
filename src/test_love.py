@@ -513,8 +513,8 @@ class MarryID:
     def Rule18(self, shen):
         bigfu_id = shen.index[shen['大限宮位'] == '大命'].to_list()
         benfu_id = shen.index[shen['本命宮位'] == '夫妻'].to_list()
-        print(bigfu_id)
-        print(benfu_id)
+        # print(bigfu_id)
+        # print(benfu_id)
 
         ## 若大夫 與 夫妻宮 在同一row 則回傳1
         if bigfu_id[0] == benfu_id[0]:
@@ -549,13 +549,13 @@ class MarryID:
         ID = self.path.split('/')[3].split('-')[0]
 
         result=[]
-        print('ID: ', ID)
+        # print('ID: ', ID)
 
         for i in range(1,11):
             data = []
             data.append(ID)
             data.append(i)
-            print('大限:',i)
+            # print('大限:',i)
 
             start = 12+132*(i-1)
             ended = 23+132*(i-1)
@@ -601,7 +601,7 @@ if __name__ == '__main__':
 
     result = pd.DataFrame([result_col])
     # len(ID_path)
-    for i in range(10): 
+    for i in range(len(ID_path)): 
         path = '../data/1922_tscs992/'+str(ID_path[i][0])+'-'+ID_path[i][1]
         Obj = MarryID(path)
         df = Obj.generate_love_rule()
