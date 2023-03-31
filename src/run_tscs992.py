@@ -8,7 +8,7 @@ usecols = ['id','v1','year', 'v3y','v3m','birth_da','kv101_0']
 df = pd.read_csv(path, usecols=usecols,encoding='Big5')
 
 # print(df.head(10))
-data_list = [560, 1228, 1573, 1786]
+data_list = [428, 1438]
 data_size = len(df)
 print(df)
 
@@ -48,13 +48,13 @@ for i in data_list:
 
     try:
         if ((df.at[i,'v3m']!='不知道或忘記') or (df.at[i,'v3m']!='不願意回答')) and (df.at[i,'birth_da'] > 0) and (df.at[i,'kv101_0']!="不適用"):
-            print("python3.9 generate_database.py "+"-n "+ str(df.at[i,'id'])+
-            " -g "+ gender+
-            " -Y "+str((df.at[i,'v3y']+1911))+
-            " -M "+str(df.at[i,'v3m'])+ 
-            " -D "+str(int(df.at[i,'birth_da']))+ 
-            " -o "+str(transform_hour(df.at[i,'kv101_0'])))
-
+            # print("python3.9 generate_database.py "+"-n "+ str(df.at[i,'id'])+
+            # " -g "+ gender+
+            # " -Y "+str((df.at[i,'v3y']+1911))+
+            # " -M "+str(df.at[i,'v3m'])+ 
+            # " -D "+str(int(df.at[i,'birth_da']))+ 
+            # " -o "+str(transform_hour(df.at[i,'kv101_0']))+
+            # " -v " +str(df.at[i,'year']))
             subprocess.run(["python3.9","generate_database.py",
             "-n",str(df.at[i,'id']),
             "-g",gender,
@@ -63,10 +63,7 @@ for i in data_list:
             "-D" ,str(int(df.at[i,'birth_da'])), 
             "-o", str(transform_hour(df.at[i,'kv101_0'])),
             "-v", str(df.at[i,'year']) ])
-
-
-
-                  
+             
     except:
         print("Error: not finish ouput file: ",i,'th file','/ id: ',str(df.at[i,'id']))
         sys.exit()
