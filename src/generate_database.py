@@ -457,7 +457,8 @@ if __name__ == "__main__":
     parser.add_argument("-M", "--Month", help = "Birth Day (month)", type= int)
     parser.add_argument("-D", "--Day", help = "Birth Day (day)", type= str)
     parser.add_argument("-o", "--hour", help = "Birth time(hour)", type= str)
-    parser.add_argument("-m", "--mins", help = "Birth time(mins)", type= str)
+    parser.add_argument("-v", "--visit", help = "Visited year", type= str)
+    # parser.add_argument("-m", "--mins", help = "Birth time(mins)", type= str)
     # Read arguments from command line
     argv = parser.parse_args()
 
@@ -472,11 +473,11 @@ if __name__ == "__main__":
     # month = str(input_month-1)
     # day = '10'
     # hour = '15'
-    # min = '30'
+    min = '30'
 
     month = str(argv.Month-1)
-    set_birth_date(argv.Year,month,argv.Day,argv.hour,argv.mins) 
+    set_birth_date(argv.Year,month,argv.Day,argv.hour,min) 
 
     time.sleep(2)
-    write_to_csv('../data/1922_tscs992/'+argv.Name+'-'+(argv.Year+'-'+str(argv.Month)+'-'+argv.Day+'-'+argv.hour+'-'+argv.mins+'.csv'))
+    write_to_csv('../data/1922_tscs992/'+argv.Name+'-'+(argv.Year+'-'+str(argv.Month)+'-'+argv.Day+'-'+argv.hour+'-'+str(min)+'-'+argv.visit+'.csv'))
     driver.quit()

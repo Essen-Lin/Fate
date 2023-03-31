@@ -34,6 +34,10 @@ class MarryID:
         self.shen = None
     ##運限夫妻宮干飛化忌入大命
     ## "大限宮位 (大夫)的天干，如天干為甲(見備註)，太陽化忌，檢查大命命宮內是否有 太陽星。
+
+    def year_in_shen(self,first_year, year):
+        return int((year-first_year)/10)+1
+    
     def Rule1(self, shen):
         ## Check ['大限宮位'] == '大夫' 的index為何
         bigfu_id = shen.index[shen['大限宮位'] == '大夫'].to_list()
@@ -546,6 +550,13 @@ class MarryID:
         
     def generate_love_rule(self):
         source = pd.read_csv(filepath_or_buffer= self.path, encoding='big5', usecols=usecols, engine = "python")
+
+        first_year = int(source.iloc[24]['大限/流年'])
+        year = int(self.path.split('/')[3].split('-')[6].split('.')[0])
+        visit_shen = int((year-first_year)/10)+1
+        # print(visit_shen)
+
+
         ID = self.path.split('/')[3].split('-')[0]
 
         result=[]
@@ -556,6 +567,7 @@ class MarryID:
             data.append(ID)
             data.append(i)
             # print('大限:',i)
+            data.append(visit_shen)
 
             start = 12+132*(i-1)
             ended = 23+132*(i-1)
@@ -596,7 +608,7 @@ if __name__ == '__main__':
     ID_path = sorted(ID_path.items())
 
 
-    result_col = ['ID','大限','Rule1','Rule2','Rule3','Rule4','Rule5','Rule6','Rule7','Rule8','Rule9','Rule10',
+    result_col = ['ID','大限','受訪時大限','Rule1','Rule2','Rule3','Rule4','Rule5','Rule6','Rule7','Rule8','Rule9','Rule10',
                         'Rule11','Rule12','Rule13','Rule14','Rule15','Rule16','Rule17','Rule18','Rule19','Rule20']
 
     result = pd.DataFrame([result_col])
@@ -607,4 +619,4 @@ if __name__ == '__main__':
         df = Obj.generate_love_rule()
         result = pd.concat([result,df])
 
-    result.to_csv('/Users/essen/LocalData/NCTU/Fate/data/love_rule_1922_tscs.csv',encoding='Big5', index=False,header=False)
+    result.to_csv('/Users/essen/LocalData/NCTU/Fate/data/love_rule_tscs.csv',encoding='Big5', index=False,header=False)
