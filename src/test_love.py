@@ -383,8 +383,6 @@ class MarryID:
             return 1
         else:
             return 0
-
-    
     ## 大限宮位 (大夫) 有無上述煞星
     ## 運限夫妻宮有煞星 (火、鈴、羊、陀)
     def Rule11(self, shen):

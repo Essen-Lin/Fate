@@ -1,7 +1,8 @@
 import pandas as pd
 import subprocess
 import sys
- 
+import numpy as np
+
 path = '../input/tscs992_with_birth_day_randomized.csv'
 #所需的欄位
 usecols = ['id','v1','year', 'v3y','v3m','birth_da','kv101_0']
@@ -11,6 +12,8 @@ df = pd.read_csv(path, usecols=usecols,encoding='Big5')
 data_list = [428, 1438]
 data_size = len(df)
 print(df)
+
+nan = np.isnan
 
 def transform_hour(time):
     if time == '23-1時(子時)':
