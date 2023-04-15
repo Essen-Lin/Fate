@@ -7,6 +7,9 @@ import time
 from bs4 import BeautifulSoup
 import csv
 import argparse
+from selenium.webdriver.chrome.options import Options
+
+
 
 def login(user, passwd): 
     email = driver.find_element(by=By.NAME,value='ion-input-0')
@@ -443,7 +446,9 @@ def write_to_csv(filename):
 if __name__ == "__main__":
     # Initialize  parser (Chrome) - Download the version of used chrome in the same path, and change the PATH
     PATH = "/Users/essen/LocalData/NCTU/Fate/chromedriver"
-    driver = webdriver.Chrome(PATH)
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    driver = webdriver.Chrome(PATH, options=chrome_options)
     driver.get("https://ziweigonglue1013.firebaseapp.com/login")
     #輸入帳號密碼 - 自動登入
     login("shenglin@nctu.edu.tw","Sheng2lab")
@@ -479,5 +484,5 @@ if __name__ == "__main__":
     set_birth_date(argv.Year,month,argv.Day,argv.hour,min) 
 
     time.sleep(2)
-    write_to_csv('../data/tscs40/'+argv.Name+'-'+(argv.Year+'-'+str(argv.Month)+'-'+argv.Day+'-'+argv.hour+'-'+str(min)+'-'+argv.visit+'.csv'))
+    write_to_csv('../data/tscs992/'+argv.Name+'-'+(argv.Year+'-'+str(argv.Month)+'-'+argv.Day+'-'+argv.hour+'-'+str(min)+'-'+argv.visit+'.csv'))
     driver.quit()

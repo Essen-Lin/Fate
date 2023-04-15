@@ -596,7 +596,7 @@ class MarryID:
 
 # source = pd.read_csv("/Users/essen/LocalData/NCTU/Fate/data/test/Husan-1996-7-10-15-30.csv", encoding= 'big5', usecols=usecols)
 if __name__ == '__main__':
-    Dir_path = glob.glob(os.path.join("../data/1922_tscs992",'*'))
+    Dir_path = glob.glob(os.path.join("../data/tscs40",'*'))
     ID_list =[]
     ID_date =[]
     for i in Dir_path:
@@ -612,9 +612,9 @@ if __name__ == '__main__':
     result = pd.DataFrame([result_col])
     # len(ID_path)
     for i in range(len(ID_path)): 
-        path = '../data/1922_tscs992/'+str(ID_path[i][0])+'-'+ID_path[i][1]
+        path = '../data/tscs40/'+str(ID_path[i][0])+'-'+ID_path[i][1]
         Obj = MarryID(path)
         df = Obj.generate_love_rule()
         result = pd.concat([result,df])
 
-    result.to_csv('/Users/essen/LocalData/NCTU/Fate/data/love_rule_tscs.csv',encoding='Big5', index=False,header=False)
+    result.to_csv('/Users/essen/LocalData/NCTU/Fate/data/love_rule_tscs042_new.csv',encoding='Big5', index=False,header=False)

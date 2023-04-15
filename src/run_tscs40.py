@@ -3,13 +3,13 @@ import subprocess
 import sys
 import numpy as np
 
-path = '../input/tscs042.csv'
+path = '../input/tscs992.csv'
 #所需的欄位
 usecols = ['id','gender','year', 'birth_year','birth_month','birth_day','birth_hour']
 df = pd.read_csv(path, usecols=usecols,encoding='utf-8')
 
-# print(df.head(45))
-data_list = [428, 1438]
+print(df.head(45))
+# data_list = [20, 61, 114, 150, 195, 271, 286, 335, 405, 406, 411, 465, 524, 570, 592, 635, 652, 700, 711, 768, 785, 796, 826, 964, 1062, 1134, 1563, 1610, 1624, 1632, 1725, 1836, 1844, 1869]
 data_size = len(df)
 # print(df)
 
@@ -38,17 +38,17 @@ def transform_hour(time):
         return str(18)
     elif time == '戍時(19~21時)':
         return str(20)
-    elif time == '未時(13~15時)':
+    elif time == '亥時(21~23時)':
         return str(22)
 
 nan = np.nan  
-for i in range(10):
-    print('id: ',str(df.at[i,'id']),'num: ',i)
+for i in range(data_size):
+    # print('id: ',str(df.at[i,'id']),'num: ',i)
     if df.at[i,'gender'] == '男':
         gender = 'm'
     elif df.at[i,'gender'] == '女':
         gender = 'w'
-    print(transform_hour(df.at[i,'birth_hour']))
+    # print(transform_hour(df.at[i,'birth_hour']))
 
     try:
         # print('M:   ', df.at[i,'birth_month'], 'nan:    ',np.isnan(df.at[i,'birth_month']))
@@ -66,14 +66,14 @@ for i in range(10):
             " -o "+str(transform_hour(df.at[i,'birth_hour']))+
             " -v " +str(df.at[i,'year']))
 
-            subprocess.run(["python3.9","generate_database.py",
-            "-n",str(df.at[i,'id']),
-            "-g",gender,
-            "-Y", str(df.at[i, 'birth_year']),
-            "-M", str(int(df.at[i,'birth_month'])), 
-            "-D" ,str(int(df.at[i,'birth_day'])), 
-            "-o", str(transform_hour(df.at[i,'birth_hour'])),
-            "-v", str(df.at[i,'year']) ])
+            # subprocess.run(["python3.9","generate_database.py",
+            # "-n",str(df.at[i,'id']),
+            # "-g",gender,
+            # "-Y", str(df.at[i, 'birth_year']),
+            # "-M", str(int(df.at[i,'birth_month'])), 
+            # "-D" ,str(int(df.at[i,'birth_day'])), 
+            # "-o", str(transform_hour(df.at[i,'birth_hour'])),
+            # "-v", str(df.at[i,'year']) ])
             # cnt+=1
 
     except:
